@@ -19,6 +19,9 @@ class Custom extends React.Component {
         let listpoint = points.map(point =>
 
             <ul>
+{/*
+                <input type="text" value={point.name}/>
+*/}
                 <li>{point.id}</li>
 
             </ul>
@@ -36,6 +39,8 @@ class Custom extends React.Component {
         return (
             <div className="Custom">
                 <div className="left">
+                    {!current &&
+                    <span>LISTE VIDE</span>}
                     {listpoint}
                 </div>
                 <div className="right" id="map" onClick={e => this.onAddPoint(e)}>
@@ -49,6 +54,7 @@ class Custom extends React.Component {
     onAddPoint(e)
     {
         let point = {
+            name : "Name: " + Date.now(),
             id : Date.now(),
             left : e.clientX,
             right : e.clientY,
